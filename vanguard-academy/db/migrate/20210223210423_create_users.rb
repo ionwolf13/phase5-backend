@@ -6,9 +6,11 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string  :last_name
       t.integer :age
       t.integer :student_id, default: 000000
-      t.integer :grade
+      t.integer :grade, default: 9
+      t.float   :gpa, default: 4.0
       t.string  :email, default: ""
       t.string  :user_role, default: "student"
+      
       t.timestamps
     end
   end
