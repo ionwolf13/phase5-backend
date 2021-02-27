@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     def index
         @users = User.all
-        render json: @users
+        render json: User.all.to_json({include: [:rooms => {:include => [:instructor]}], except: [:created_at, :updated_at]})
     end
 
     def show
@@ -11,15 +11,24 @@ class UsersController < ApplicationController
     end
 
     def create
-
+        @user = User.create(user_params())
+        render json: @user
     end
 
     def update
-
+        @user = User.find(params[:id])
+        @user.update(user_params())
     end
 
     def delete
 
+    end
+
+
+    private
+
+    def user_params(*args)
+        params.require(:user).permit(*args)
     end
 
 end
