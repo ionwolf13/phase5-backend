@@ -4,12 +4,12 @@ class CreateSchools < ActiveRecord::Migration[6.1]
       t.string  :name
       t.string  :campus_id
       t.boolean :public, default: true
-      t.string  :principal
-      t.string  :concentration
-      t.string  :level_of_education
-      t.integer :classrooms
-      t.string  :address
-      t.integer :phone
+      t.string  :principal, default: "FlatIron"
+      t.string  :concentration, default: "Technology"
+      t.string  :level_of_education, default: "High School"
+      t.integer :classrooms, default: 20
+      t.string  :address, default: ""
+      t.integer :phone, default: 000
       t.timestamps
     end
   end
