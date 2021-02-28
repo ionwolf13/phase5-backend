@@ -12,8 +12,8 @@ StudentRoom.destroy_all
 
 School.create(name: "Vanguard Academy", campus_id: "XD23H1")
 
-User.create(first_name: "Jesus",last_name: "Garcia")
-User.create(first_name: "Israel",last_name: "Garcia")
+User.create(first_name: "Jesus",last_name: "Garcia", username: "jesus", email: "jesus@gmail.com", password: "jesus")
+User.create(first_name: "Israel",last_name: "Garcia", username: "israel", email: "israel@gmail.com", password: "israel")
 
 
 Room.create(school_id: School.first.id, room_number: 10, subject: "Algebra I")

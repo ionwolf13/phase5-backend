@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 2021_02_26_164600) do
     t.string "last_name"
     t.string "age"
     t.string "subject"
+    t.string "username"
+    t.string "email"
+    t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -41,12 +44,12 @@ ActiveRecord::Schema.define(version: 2021_02_26_164600) do
     t.string "name"
     t.string "campus_id"
     t.boolean "public", default: true
-    t.string "principal"
-    t.string "concentration"
-    t.string "level_of_education"
-    t.integer "classrooms"
-    t.string "address"
-    t.integer "phone"
+    t.string "principal", default: "FlatIron"
+    t.string "concentration", default: "Technology"
+    t.string "level_of_education", default: "High School"
+    t.integer "classrooms", default: 20
+    t.string "address", default: ""
+    t.integer "phone", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -59,15 +62,17 @@ ActiveRecord::Schema.define(version: 2021_02_26_164600) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "username"
     t.string "first_name"
     t.string "middle_name", default: ""
     t.string "last_name"
     t.integer "age"
     t.integer "student_id", default: 0
-    t.integer "grade"
-    t.float "gpa"
+    t.integer "grade", default: 100
+    t.float "gpa", default: 4.0
     t.string "email", default: ""
     t.string "user_role", default: "student"
+    t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
