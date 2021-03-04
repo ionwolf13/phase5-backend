@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_164600) do
+ActiveRecord::Schema.define(version: 2021_03_03_191531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "instructors", force: :cascade do |t|
     t.integer "school_id"
@@ -25,7 +30,8 @@ ActiveRecord::Schema.define(version: 2021_02_26_164600) do
     t.string "subject"
     t.string "username"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
+    t.string "user_role", default: "instructor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -72,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_164600) do
     t.float "gpa", default: 4.0
     t.string "email", default: ""
     t.string "user_role", default: "student"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
