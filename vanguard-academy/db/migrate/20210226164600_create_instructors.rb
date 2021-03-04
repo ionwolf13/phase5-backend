@@ -10,7 +10,8 @@ class CreateInstructors < ActiveRecord::Migration[6.1]
       t.string  :subject
       t.string  :username
       t.string  :email
-      t.string  :password
+      t.string  :password_digest
+      t.string  :user_role, default: "instructor"
 
       t.timestamps
     end

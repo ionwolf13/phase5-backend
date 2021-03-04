@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.float   :gpa, default: 4.0
       t.string  :email, default: ""
       t.string  :user_role, default: "student"
-      t.string  :password
+      t.string  :password_digest
       
       t.timestamps
     end

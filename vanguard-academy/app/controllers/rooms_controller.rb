@@ -19,6 +19,6 @@ class RoomsController < ApplicationController
     end
 
     def delete
-
+        
     end
 end

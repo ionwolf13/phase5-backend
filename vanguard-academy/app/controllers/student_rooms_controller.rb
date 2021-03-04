@@ -11,12 +11,12 @@ class StudentRoomsController < ApplicationController
     end
 
     def create
-        @stu_room = StudentRoom.create(stu_room_params())
+        @stu_room = StudentRoom.create(stu_room_params(:user_id, :room_id))
         render json: @stu_room
     end
 
     def update
-
+        
     end
 
     def delete
