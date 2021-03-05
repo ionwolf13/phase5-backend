@@ -7,18 +7,20 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-
-        render json: @user.to_json({include: [:rooms => {:include => [:instructor]}], except: [:created_at, :updated_at]})
+        render json: @user.to_json({:include => [:student_rooms => {:include => [:room => {:include => [:instructor]}]}]}) 
     end
-
+       
     def create
-        @user = User.new(user_params())
+        @user = User.new(user_params(:first_name, :middle_name, :last_name, :username, :age, :email, :password, :password_confirmation))
+        debugger
         if @user.valid?
             @user.save
+            
+            render json: {message: 'Application Submitted', user: @user}
         else
-
+            render json: {message: @user.errors}
         end
-        render json: @user
+       
     end
 
     def update

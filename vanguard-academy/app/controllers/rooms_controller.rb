@@ -7,7 +7,7 @@ class RoomsController < ApplicationController
 
     def show
         @room = Room.find(params[:id])
-        render json: @room
+        render json: @room.to_json({include: [:student_rooms]})
     end
 
     def create

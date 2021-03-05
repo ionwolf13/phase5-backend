@@ -1,4 +1,4 @@
-class StudentRoomsController < ApplicationController
+class StudentAssignmentsController < ApplicationController
 
     def index
         @stu_rooms = StudentRoom.all
@@ -34,7 +34,6 @@ class StudentRoomsController < ApplicationController
     def stu_room_params(*args)
         params.require(:student_room).permit(*args)
     end
-
 
 
 
