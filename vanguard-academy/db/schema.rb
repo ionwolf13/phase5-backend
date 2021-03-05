@@ -10,12 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_03_191531) do
+ActiveRecord::Schema.define(version: 2021_03_04_054022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assignments", force: :cascade do |t|
+    t.integer "instructor_id"
+    t.string "assignment_name", default: "Pop Quiz"
+    t.string "Assignment_topic", default: "Knowledge Review"
+    t.integer "level_difficulty", default: 0
+    t.integer "grade_level", default: 100
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -48,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_03_03_191531) do
 
   create_table "schools", force: :cascade do |t|
     t.string "name"
-    t.string "campus_id"
+    t.string "campus_id", default: "XDY091"
     t.boolean "public", default: true
     t.string "principal", default: "FlatIron"
     t.string "concentration", default: "Technology"
@@ -56,6 +61,14 @@ ActiveRecord::Schema.define(version: 2021_03_03_191531) do
     t.integer "classrooms", default: 20
     t.string "address", default: ""
     t.integer "phone", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "student_assignments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "assignment_id"
+    t.integer "student_score", default: 100
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -73,12 +86,14 @@ ActiveRecord::Schema.define(version: 2021_03_03_191531) do
     t.string "middle_name", default: ""
     t.string "last_name"
     t.integer "age"
-    t.integer "student_id", default: 0
+    t.string "student_school_number", default: "000000"
     t.integer "grade", default: 100
     t.float "gpa", default: 4.0
     t.string "email", default: ""
     t.string "user_role", default: "student"
     t.string "password_digest"
+    t.boolean "vaccination_document", default: false
+    t.boolean "school_history_document", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
