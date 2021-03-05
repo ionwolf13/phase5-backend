@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   resources :users, :rooms, :student_rooms, :instructors
   resources :schools
 
-  get '/login', to: 'sesssions#new'
-  post '/login', to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy'
+  # get '/login', to: 'sesssions#new'
+  # post '/login', to: 'sessions#create'
+  # get '/logout', to: 'sessions#destroy'
+
+    post '/login', to: 'auth#create' 
+#   # get '/logout', to: 'sessions#destroy'
 end

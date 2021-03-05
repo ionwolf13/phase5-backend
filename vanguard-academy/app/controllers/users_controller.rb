@@ -12,7 +12,6 @@ class UsersController < ApplicationController
        
     def create
         @user = User.new(user_params(:first_name, :middle_name, :last_name, :username, :age, :email, :password, :password_confirmation))
-        debugger
         if @user.valid?
             @user.save
             
@@ -25,11 +24,15 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        @user.update(user_params())
+        @user.update(user_params(:username, :email, :email_confirmation, :password, :password_confirmation))
+        render json: @user.to_json({include: [:rooms => {:include => [:instructor => {:include => [:assignments => {:include => [:student_assignments]}]}]}], except: [:created_at, :updated_at]})
+        
     end
 
-    def delete
-
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+        render json: {message: "Expelled!"}
     end
 
 
