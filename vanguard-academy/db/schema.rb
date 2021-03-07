@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 2021_03_04_054022) do
   create_table "assignments", force: :cascade do |t|
     t.integer "instructor_id"
     t.string "assignment_name", default: "Pop Quiz"
-    t.string "Assignment_topic", default: "Knowledge Review"
+    t.string "assignment_topic", default: "Home Work"
     t.integer "level_difficulty", default: 0
     t.integer "grade_level", default: 100
+    t.float "score_average", default: 100.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -35,8 +36,11 @@ ActiveRecord::Schema.define(version: 2021_03_04_054022) do
     t.string "subject"
     t.string "username"
     t.string "email"
+    t.string "email_confirmation"
+    t.integer "phone_number", default: 339968
     t.string "password_digest"
     t.string "user_role", default: "instructor"
+    t.string "hobbies", default: "Flat Iron"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -76,6 +80,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_054022) do
   create_table "student_rooms", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
+    t.integer "average_score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -90,10 +95,12 @@ ActiveRecord::Schema.define(version: 2021_03_04_054022) do
     t.integer "grade", default: 100
     t.float "gpa", default: 4.0
     t.string "email", default: ""
+    t.string "email_confirmation"
     t.string "user_role", default: "student"
     t.string "password_digest"
     t.boolean "vaccination_document", default: false
     t.boolean "school_history_document", default: false
+    t.string "code_of_conduct", default: "Excellent"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

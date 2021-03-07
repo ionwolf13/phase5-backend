@@ -8,9 +8,9 @@ class User < ApplicationRecord
     has_many :student_assignments
     has_many :assignments, through: :student_assignments
     
-    validates :username, uniqueness: true
-    validates :email, uniqueness: true 
-    validates :email, confirmation: true
+    # validates :username, uniqueness: true
+    # validates :email, uniqueness: true 
+    # validates :email, confirmation: true
     
     
 
