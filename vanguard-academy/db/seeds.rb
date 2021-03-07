@@ -27,23 +27,23 @@ User.create(first_name: "Jesus",last_name: "Garcia", username: "jesus", email: "
 User.create(first_name: "Israel",last_name: "Garcia", username: "israel", email: "israel@gmail.com", password: "israel")
 
 
-puts "Seed Page Loaded //////"
-StudentRoom.create(user_id: User.first.id, room_id: Room.first.id)
 
+StudentRoom.create(user_id: User.first.id, room_id: Room.first.id)
+puts "Seed Page Loaded //////"
 StudentRoom.create(user_id: User.first.id, room_id: Room.second.id)
 StudentRoom.create(user_id: User.second.id, room_id: Room.first.id)
 StudentRoom.create(user_id: User.second.id, room_id: Room.third.id)
 
 
 
-Instructor.create(first_name: "Dane",last_name: "Dawson", school_id: School.first.id, room_id: Room.first.id)
-Instructor.create(first_name: "Antonio",last_name: "Reid", school_id: School.first.id, room_id: Room.second.id)
-Instructor.create(first_name: "Matteo",last_name: "Ricci", school_id: School.first.id, room_id: Room.fourth.id)
-Instructor.create(first_name: "Raul",last_name: "Sanchez", school_id: School.first.id, room_id: Room.all[5].id)
-Instructor.create(first_name: "Angelo",last_name: "Xenakis", school_id: School.first.id, room_id: Room.all[7].id)
-Instructor.create(first_name: "Mansour",last_name: "Cheyo", school_id: School.first.id, room_id: Room.all[6].id)
-Instructor.create(first_name: "Adam",last_name: "Johson", school_id: School.first.id, room_id: Room.fifth.id)
-Instructor.create(first_name: "Marc",last_name: "Majcher", school_id: School.first.id, room_id: Room.third.id)
+Instructor.create(first_name: "Dane",last_name: "Dawson", school_id: School.first.id, room_id: Room.first.id, username: "dane", password: "dane")
+Instructor.create(first_name: "Antonio",last_name: "Reid", school_id: School.first.id, room_id: Room.second.id, username: "antonio", password: "12345")
+Instructor.create(first_name: "Matteo",last_name: "Ricci", school_id: School.first.id, room_id: Room.fourth.id, username: "matteo", password: "12345")
+Instructor.create(first_name: "Raul",last_name: "Sanchez", school_id: School.first.id, room_id: Room.all[5].id, username: "raul", password: "12345")
+Instructor.create(first_name: "Angelo",last_name: "Xenakis", school_id: School.first.id, room_id: Room.all[7].id, username: "angelo", password: "12345")
+Instructor.create(first_name: "Mansour",last_name: "Cheyo", school_id: School.first.id, room_id: Room.all[6].id, username: "mansour", password: "12345")
+Instructor.create(first_name: "Adam",last_name: "Johson", school_id: School.first.id, room_id: Room.fifth.id, username: "adam", password: "12345")
+Instructor.create(first_name: "Marc",last_name: "Majcher", school_id: School.first.id, room_id: Room.third.id, username: "marc", password: "12345")
 
 
 Assignment.create(instructor_id: Instructor.first.id)

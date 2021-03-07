@@ -3,7 +3,7 @@ class CreateStudentRooms < ActiveRecord::Migration[6.1]
     create_table :student_rooms do |t|
       t.integer :user_id
       t.integer :room_id
-
+      t.integer :average_score
       t.timestamps
     end
   end
