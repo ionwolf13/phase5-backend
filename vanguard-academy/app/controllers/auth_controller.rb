@@ -17,7 +17,8 @@ class AuthController < ApplicationController
           @instructor = Instructor.find_by(username: login_params[:username])
           if @instructor && @instructor.authenticate(login_params[:password])
             # user = @instructor.to_json({include: [:rooms]})
-            render json: {user: @instructor.to_json({include: [:assignments ,:room => {:include => [:users => {:include => [:assignments]}]}]}), token: JWT.encode({user_id: @instructor.id}, 'ChildrenOfTheCode')}, status: :accepted   
+            
+            render json: {user: @instructor.to_json({include: [:assignments => {:include => [:student_assignments => {:include => [:user]}]} ,:room => {:include => [:users => {:include => [:assignments]}]}]}), token: JWT.encode({user_id: @instructor.id}, 'ChildrenOfTheCode')}, status: :accepted   
           else
             render json: { message: 'Invalid username or password', status: :unauthorized }
           end

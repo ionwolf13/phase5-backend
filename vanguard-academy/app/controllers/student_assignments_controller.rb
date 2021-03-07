@@ -1,20 +1,18 @@
 class StudentAssignmentsController < ApplicationController
 
     def index
-        @stu_rooms = StudentRoom.all
-        @single_stu_room = StudentRoom.find_by(user_id: params[:user_id], room_id: params[:room_id])
-        
-        render json: @single_stu_room
+        @stu_assignments = StudentAssignment.all        
+        render json: @stu_assignments
     end
 
     def show
-        @stu_room = StudentRoom.find(params[:id])
-        render json: @stu_room
+        @stu_assignment = StudentAssignment.find(params[:id])
+        render json: @stu_assignment
     end
 
     def create
-        @stu_room = StudentRoom.create(stu_room_params(:user_id, :room_id))
-        render json: @stu_room
+        @stu_assignment = StudentAssignment.create(stu_assignment_params(:user_id, :room_id))
+        render json: @stu_assignment
     end
 
     def update
@@ -22,17 +20,17 @@ class StudentAssignmentsController < ApplicationController
     end
 
     def destroy
-        @stu_room = StudentRoom.find(params[:id])
+        @stu_assignment = StudentAssignment.find(params[:id])
         
-        user = @stu_room.user
-        @stu_room.delete
+        user = @stu_assignment.user
+        @stu_assignment.delete
         render json: user
     end
     
     private
 
-    def stu_room_params(*args)
-        params.require(:student_room).permit(*args)
+    def stu_assignment_params(*args)
+        params.require(:student_assignment).permit(*args)
     end
 
 
