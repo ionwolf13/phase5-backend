@@ -8,7 +8,7 @@ class InstructorsController < ApplicationController
     def show
         @instructor = Instructor.find(params[:id])
         # render json: @instructor.to_json({include: [:room, :assignments => {:include => [:users]}]})
-        render json: @instructor.to_json({include: [:assignments => {:include => [:student_assignments]}]}, :room => {:include => [:users => {:include => [:assignments]}]}]})
+        render json: @instructor.to_json({include: [:assignments => {:include => [:student_assignments]}, :room => {:include => [:users => {:include => [:assignments]}]}]})
     end
 
     def create
