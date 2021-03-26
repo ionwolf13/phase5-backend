@@ -21,10 +21,8 @@ class StudentAssignmentsController < ApplicationController
 
     def destroy
         @stu_assignment = StudentAssignment.find(params[:id])
-        
-        user = @stu_assignment.user
         @stu_assignment.delete
-        render json: user
+        render json: {:messageL "DELETED"}
     end
     
     private

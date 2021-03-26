@@ -26,7 +26,9 @@ class AssignmentsConroller < ApplicationController
     end
 
     def delete
-
+        @assignment = Assignment.find(params[:id])
+        @assignment.delete
+        render json: {:messageL "DELETED"}
     end
 
 
