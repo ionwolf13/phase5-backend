@@ -1,41 +1,45 @@
-class AssignmentsConroller < ApplicationController
+class AssignmentsController < ApplicationController
 
     def index
-        @assignments =Assignment.all
+        @assignments = Assignment.all
         
         render json: @assignments
     end
 
     def show
-        @assignemnt =Assignment.find(params[:id])
-        render json: @assignemnt
-       
+        @assignment =Assignment.find(params[:id])
+        render json: @assignment
+    end
+
     def create
-        @assignemnt = Assignment.new(user_params())
-        if @assignemnt.valid?
-            @assignemnt.save
+       debugger
+        @assignment = Assignment.new(assignment_params(:instructor_id, :assignemnt_name, :assignment_topic, :level_difficulty, :grade_level, :score_average))
+       
+        if @assignment.valid?
+            @assignment.save
         else
             render json: {errors: "Invalid Info"}
         end
-        render json: @assignemnt
+        render json: @assignment
     end
 
+
     def update
-        @assignemnt =Assignment.find(params[:id])
-        @assignemnt.update(user_params())
+        @assignment =Assignment.find(params[:id])
+        @assignment.update(user_params())
     end
 
     def delete
         @assignment = Assignment.find(params[:id])
         @assignment.delete
-        render json: {:messageL "DELETED"}
+        render json: {message: "DELETED"}
     end
 
 
     private
 
-    def user_params(*args)
-        params.require(:user).permit(*args)
+    def assignment_params(*args)
+        params.require(:assignment).permit(*args)
     end
 
 
