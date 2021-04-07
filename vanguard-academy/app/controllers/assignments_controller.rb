@@ -13,7 +13,7 @@ class AssignmentsController < ApplicationController
 
     def create
        debugger
-        @assignment = Assignment.new(assignment_params(:instructor_id, :assignemnt_name, :assignment_topic, :level_difficulty, :grade_level, :score_average))
+        @assignment = Assignment.new(assignment_params(:instructor_id, :assignment_name, :assignment_topic, :level_difficulty, :grade_level, :score_average))
        
         if @assignment.valid?
             @assignment.save
