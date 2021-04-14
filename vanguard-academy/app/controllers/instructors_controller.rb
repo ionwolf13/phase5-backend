@@ -24,6 +24,7 @@ class InstructorsController < ApplicationController
     end
 
     def update
+        debugger
         @instructor = Instructor.find(params[:id])
         @instructor.update(instructor_params(:username, :email, :email_confirmation, :password, :password_confirmation))
         render json: @instructor.to_json({include: [:assignments ,:room => {:include => [:users => {:include => [:assignments]}]}]})

@@ -16,6 +16,9 @@ class StudentAssignmentsController < ApplicationController
     end
 
     def update
+        @student_assignment = StudentAssignment.find(params[:id])
+        @student_assignment.update(stu_assignment_params())
+        render json: @student_assignment
         
     end
 
