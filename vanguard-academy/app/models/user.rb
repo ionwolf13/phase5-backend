@@ -12,7 +12,7 @@ class User < ApplicationRecord
     # validates :email, uniqueness: true 
     # validates :email, confirmation: true
     
-    
+    #maybe try and add some logic to all of this
 
    
 

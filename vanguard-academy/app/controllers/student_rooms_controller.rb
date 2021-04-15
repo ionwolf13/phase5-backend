@@ -16,11 +16,13 @@ class StudentRoomsController < ApplicationController
         @stu_room = StudentRoom.create(stu_room_params(:user_id, :room_id))
         @room = Room.find(params[:room_id])
 
-        render json: @room.to_json({include: [:instructor => {:include => [:assignments => {:include => [:student_assignments]}]}]})
+        render json: @room.to_json({include: [:instructor => {:include => [:assignments => {:include => [:stu_rooms]}]}]})
     end
 
     def update
-        
+        @stu_room = StudentRoom.find(params[:id])
+        @stu_room.update(stu_room_params())
+        render json: @stu_room
     end
 
     def destroy
