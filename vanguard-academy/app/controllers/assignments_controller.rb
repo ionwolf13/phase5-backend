@@ -17,10 +17,11 @@ class AssignmentsController < ApplicationController
        
         if @assignment.valid?
             @assignment.save
+            render json: @assignment
         else
             render json: {errors: "Invalid Info"}
         end
-        render json: @assignment
+        
     end
 
 
