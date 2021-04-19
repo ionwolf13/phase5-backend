@@ -14,6 +14,8 @@ class User < ApplicationRecord
     
     #maybe try and add some logic to all of this
 
-   
+   def userFullName
+        return self.first_name + self.middle_name + self.last_name
+   end
 
 end 

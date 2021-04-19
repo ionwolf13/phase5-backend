@@ -11,13 +11,19 @@ class StudentAssignmentsController < ApplicationController
     end
 
     def create
-        @stu_assignment = StudentAssignment.create(stu_assignment_params(:user_id, :room_id))
-        render json: @stu_assignment
+        @stu_assignment = StudentAssignment.create(stu_assignment_params(:user_id, :assignment_id, :student_score))
+        if @stu_assignment.valid?
+            @stu_assignment.save
+            render json: @stu_assignment
+        else
+            render json: {errors: "Invalid Info"}
+        end
+        
     end
 
     def update
         @student_assignment = StudentAssignment.find(params[:id])
-        @student_assignment.update(stu_assignment_params())
+        @student_assignment.update(stu_assignment_params(:student_score))
         render json: @student_assignment
         
     end
@@ -25,7 +31,7 @@ class StudentAssignmentsController < ApplicationController
     def destroy
         @stu_assignment = StudentAssignment.find(params[:id])
         @stu_assignment.delete
-        render json: {:messageL "DELETED"}
+        render json: {:message: "DELETED"}
     end
     
     private
