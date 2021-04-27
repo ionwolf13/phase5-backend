@@ -11,14 +11,28 @@ class RoomsController < ApplicationController
     end
 
     def create
+        @room = Room.create(room_params(:user_id, :room_id))
+        @room = Room.find(params[:room_id])
 
+        render json: @room.to_json({include: [:instructor => {:include => [:assignments => {:include => [:stu_rooms]}]}]})
     end
 
     def update
-
+        @room = Room.find(params[:id])
+        @room.update(room_params())
+        render json: @room
     end
 
-    def delete
-        
+    def destroy
+        @room = Room.find(params[:id])
+        user = @room.user
+        @room.destroy
+        render json: user.to_json({include: [:rooms => {}]})
+    end
+
+    private
+
+    def room_params(*args)
+        params.require(:room).permit(*args)
     end
 end
