@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_054022) do
     t.string "middle_name", default: ""
     t.string "last_name"
     t.integer "age"
-    t.string "profile_image", default: ""
+    t.string "profile_image", default: "profileDefault"
     t.string "student_school_number", default: "000000"
     t.integer "grade", default: 100
     t.float "gpa", default: 4.0

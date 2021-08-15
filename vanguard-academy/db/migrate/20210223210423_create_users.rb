@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string  :middle_name, default: ""
       t.string  :last_name
       t.integer :age
+      t.string  :learning_style, default: "none"
       t.string  :profile_image, default: "profileDefault"
       t.string  :student_school_number, default: "000000"
       t.integer :grade, default: 100
